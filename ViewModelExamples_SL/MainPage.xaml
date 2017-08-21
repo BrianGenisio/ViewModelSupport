@@ -1,0 +1,89 @@
+﻿<navigation:Page x:Class="ViewModelExamples_SL.MainPage" 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           mc:Ignorable="d"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation" xmlns:vms="clr-namespace:ViewModelSupport_SL;assembly=ViewModelSupport_SL" 
+           d:DesignWidth="640" d:DesignHeight="880"
+           Title="MainPage Page" Background="White">
+    <StackPanel Height="800" Width="640" Background="White">
+
+        <Border CornerRadius="5" BorderThickness="2" BorderBrush="Black" DataContext="{Binding [AutomaticCommandViewModel], Source={StaticResource ViewModelLocator}}" Margin="5">
+            <StackPanel>
+                <TextBlock Text="Automatic Command Plumbing" Margin="5" />
+                <Button Content="Execute MyCommand" Command="{Binding [MyCommand]}" Margin="5" />
+            </StackPanel>
+        </Border>
+
+        <Border CornerRadius="5" BorderThickness="2" BorderBrush="Black" DataContext="{Binding [PropertyHelpersViewModel], Source={StaticResource ViewModelLocator}}" Margin="5">
+            <StackPanel>
+                <TextBlock Text="Property Helpers" Margin="5" />
+                <TextBox Text="{Binding Text, Mode=TwoWay}" Margin="5" />
+            </StackPanel>
+        </Border>
+
+        <Border CornerRadius="5" BorderThickness="2" BorderBrush="Black" DataContext="{Binding [DynamicPropertyViewModel], Source={StaticResource ViewModelLocator}}" Margin="5">
+            <StackPanel>
+                <TextBlock Text="Dynamic Properties" Margin="5" />
+                <TextBlock Text="{Binding [Foo]}" Margin="5" />
+            </StackPanel>
+        </Border>
+
+        <Border CornerRadius="5" BorderThickness="2" BorderBrush="Black" DataContext="{Binding [DefaultValuesViewModel], Source={StaticResource ViewModelLocator}}" Margin="5">
+            <StackPanel>
+                <TextBlock Text="Default Values" Margin="5" />
+                <TextBox Text="{Binding Text}" Margin="5" />
+            </StackPanel>
+        </Border>
+
+        <Border CornerRadius="5" BorderThickness="2" BorderBrush="Black" DataContext="{Binding [DependantPropertiesViewModel], Source={StaticResource ViewModelLocator}}" Margin="5">
+            <StackPanel>
+                <TextBlock Text="Dependant Property Chains" Margin="5" />
+                <TextBox Text="{Binding Score, Mode=TwoWay}" Margin="5" />
+                <TextBlock Text="{Binding Percentage}" Margin="5" />
+                <TextBlock Text="{Binding Output}" Margin="5" />
+            </StackPanel>
+        </Border>
+
+        <Border CornerRadius="5" BorderThickness="2" BorderBrush="Black" DataContext="{Binding [DependantMethodsViewModel], Source={StaticResource ViewModelLocator}}" Margin="5">
+            <StackPanel>
+                <TextBlock Text="Dependant Method Execution" Margin="5" />
+                <TextBox Text="{Binding Score, Mode=TwoWay}" Margin="5" />
+            </StackPanel>
+        </Border>
+
+        <Border CornerRadius="5" BorderThickness="2" BorderBrush="Black" DataContext="{Binding [CanExecuteViewModel], Source={StaticResource ViewModelLocator}}" Margin="5">
+            <StackPanel>
+                <TextBlock Text="CanExecute Change Notification" Margin="5" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Margin="5" Content="Make Lowercase" Command="{Binding [MakeLower]}" />
+                    <TextBox Text="{Binding Input, Mode=TwoWay}" Margin="5" Width="50" vms:Update.PropertyChanged="True"  />
+                    <TextBlock Text="{Binding Output}" Margin="5" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Border CornerRadius="5" BorderThickness="2" BorderBrush="Black" DataContext="{Binding Source={StaticResource MEFViewModelLocator}, Converter={StaticResource IndexConverter}, ConverterParameter=DynamicPropertyBinding}" Margin="5">
+            <StackPanel>
+                <TextBlock Text="Dynamic Property Binding" Margin="5" />
+                <StackPanel>
+                    <TextBox Text="{Binding [Friend], Mode=TwoWay}" Margin="5" Width="50" vms:Update.PropertyChanged="True" />
+                    <TextBlock Text="{Binding FriendSentance}" Margin="5" />
+                    <Button Command="{Binding [UpdateFriend]}" CommandParameter="Mike" Content="Change Friend To Mike" Margin="5" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Border CornerRadius="5" BorderThickness="2" BorderBrush="Black" DataContext="{Binding [ViewModelWithDependancy], Source={StaticResource ViewModelLocator}}" Margin="5">
+            <StackPanel>
+                <TextBlock Text="ViewModel with Dependancy" Margin="5" />
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock Text="Random Number: " />
+                    <TextBlock Text="{Binding Value}" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+    </StackPanel>
+</navigation:Page>

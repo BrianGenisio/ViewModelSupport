@@ -1,0 +1,17 @@
+﻿<Application x:Class="ViewModelExamples.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:VMS="clr-namespace:ViewModelSupport;assembly=ViewModelSupport" xmlns:local="clr-namespace:ViewModelExamples.Resolvers" StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <VMS:ViewModelLocator x:Key="ViewModelLocator">
+            <VMS:ViewModelLocator.Resolver>
+                <local:UnityViewModelResolver />
+            </VMS:ViewModelLocator.Resolver>
+        </VMS:ViewModelLocator>
+
+        <VMS:ViewModelLocator x:Key="MEFViewModelLocator">
+            <VMS:ViewModelLocator.Resolver>
+                <local:MEFViewModelResolver />
+            </VMS:ViewModelLocator.Resolver>
+        </VMS:ViewModelLocator>
+    </Application.Resources>
+</Application>

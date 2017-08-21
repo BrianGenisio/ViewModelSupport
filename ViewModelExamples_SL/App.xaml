@@ -1,0 +1,19 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:VMS="clr-namespace:ViewModelSupport;assembly=ViewModelSupport_SL" xmlns:ViewModelExamples="clr-namespace:ViewModelExamples" xmlns:local="clr-namespace:ViewModelExamples.Resolvers" xmlns:ViewModelSupport_SL="clr-namespace:ViewModelSupport_SL;assembly=ViewModelSupport_SL" x:Class="ViewModelExamples_SL.App"
+             >
+    <Application.Resources>
+        <ViewModelSupport_SL:IndexConverter x:Key="IndexConverter" />
+        
+        <VMS:ViewModelLocator x:Key="ViewModelLocator">
+            <VMS:ViewModelLocator.Resolver>
+                <local:UnityViewModelResolver />
+            </VMS:ViewModelLocator.Resolver>
+        </VMS:ViewModelLocator>
+
+        <VMS:ViewModelLocator x:Key="MEFViewModelLocator">
+            <VMS:ViewModelLocator.Resolver>
+                <local:MEFViewModelResolver />
+            </VMS:ViewModelLocator.Resolver>
+        </VMS:ViewModelLocator>
+    </Application.Resources>
+</Application>
